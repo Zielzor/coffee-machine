@@ -1,10 +1,26 @@
+import data
 from data import MENU, resources, coins
 
 menu = MENU
-altered_resources = {}
+
+altered_resources = {
+    "water": 0,
+    "milk": 0,
+    "coffee": 0,
+    "money": resources["money"]
+}
+
+
 
 def check_resources(user_input):
-    pass
+    if user_input != "report":
+        if count == 0:
+            if altered_resources["water"] == 0 :
+                pass
+        if count > 0:
+            if altered_resources != MENU[user_input]["ingredients"]:
+                print("Brak matsow na kawe")
+
 
 
 def user_money():
@@ -45,7 +61,7 @@ def calculate_change(user_input):
         return None
     else:
         change = user_coins - menu[user_input]["cost"]
-        return f"${change} in change"
+        return f"${change} here is your change"
 
 
 def print_resources():
@@ -63,24 +79,23 @@ def print_resources():
         print(f"water : {water} ml\n milk: {milk} ml\n coffee : {coffee}g \n money : {money} $ ")
 
 
-while True:
-    count = 0
+count = 0
+coffee = True
+while coffee:
     user_input = str(input("What would you like? (espresso/latte/cappuccino):> "))
+    check_resources(user_input)
     if user_input == "report":
         print_resources()
     elif user_input != "report":
         print("Please insert coins")
         user_coins = user_money()
         check = check_transaction()
-
         if check != False:
             manage_resources(user_input)
-            print("Transaction passed, here is your coffee")
+            count += 1
+            print(f"Transaction passed, here is your {user_input}")
+            print(calculate_change(user_input))
         else:
             print("Transaction failed, money returned")
 
 
-    count += 1
-    print(calculate_change(user_input))
-
-# TODO 4. Check if money insterted was enough for cofee.
