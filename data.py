@@ -5,6 +5,7 @@ MENU = {
         "ingredients": {
             "water": 50,
             "coffee": 18,
+            "milk": 0,
         },
         "cost": 1.5,
     },
@@ -41,4 +42,9 @@ coins = {
 
 }
 
-
+altered_resources = {
+    "water": 0,
+    "milk": 0,
+    "coffee": 0,
+    "money": resources["money"]
+}
